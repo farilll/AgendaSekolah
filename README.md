@@ -60,23 +60,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
-# Agenda Sekolah
-
-Agenda Sekolah adalah aplikasi Laravel sederhana yang memungkinkan admin dan guru membuat agenda kegiatan sekolah, serta memungkinkan siswa melihat dan mendaftar agenda yang tersedia.
-
----
-
-## Identitas
-
--   **Nama**: [Faril]
--   **NIM**: [D0223015]
-
----
-
-## Mata Kuliah
-
--   **Nama Mata Kuliah**: [Framework Web Based]
--   **Tahun**: [2025]
+<p align="center">
+  <b>RentNGo</b><br>
+  <i>(Sistem Penyewaan Alat Camping)</i><br><br>
+  <img src="images/logoUnsulbar.jpg" width="150"><br><br>
+  <b>Faril</b><br>
+  <b>D0223015</b><br><br>
+  Framework Web Based<br>
+  2025
+</p>
 
 ---
 
