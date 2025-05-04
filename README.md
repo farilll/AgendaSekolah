@@ -129,12 +129,15 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -   Tabel `[users]` memiliki relasi **one-to-many** dengan tabel `[agenda]`.
 
     -   Foreign key: `user_id` di `[agenda]` merujuk ke `id` di `[users]`.
+    -   Penjelasan: 1 pengguna bisa membuat banyak agenda.
 
 -   Tabel `[agenda]` memiliki relasi **one-to-many** dengan tabel `[agenda_user]`.
 
     -   Foreign key: `agenda_id` di `[agenda_user]` merujuk ke `id` di `[agenda]`.
+    -   Penjelasan: 1 agenda bisa diikuti oleh banyak siswa.
 
 -   Tabel `[users]` memiliki relasi **one-to-many** dengan tabel `[agenda_user]`.
     -   Foreign key: `user_id` di `[agenda_user]` merujuk ke `id` di `[users]`.
+    -   Penjelasan: 1 siswa bisa mendaftar ke banyak agenda.
 
 ---
