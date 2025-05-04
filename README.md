@@ -59,11 +59,75 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
-<center>
-<h1>Agenda Sekolah</h1>
 
-<p>faril</p>
-<p>D0223015</p>
-<p>framework based web</p>
-<p>2025</p>
-</center>
+# Judul Proyek
+
+Agenda Sekolah.
+
+---
+
+## Identitas
+
+-   **Nama**: [Faril]
+-   **NIM**: [D0223015]
+
+---
+
+## Mata Kuliah
+
+-   **Nama Mata Kuliah**: [Framework Web Based]
+-   **Tahun**: [2025]
+
+---
+
+## Role dan Fitur-fiturnya
+
+| Role  | Fitur                                    |
+| ----- | ---------------------------------------- |
+| Admin | - [Fitur admin 1] <br> - [Fitur admin 2] |
+| Guru  | - [Fitur guru 1] <br> - [Fitur guru 2]   |
+| Siswa | - [Fitur siswa 1] <br> - [Fitur siswa 2] |
+
+---
+
+## Struktur Tabel Database
+
+### Tabel 1: `[Nama Tabel 1]`
+
+| Nama Field | Tipe Data    | Keterangan                  |
+| ---------- | ------------ | --------------------------- |
+| id         | INT          | Primary key, auto increment |
+| nama       | VARCHAR(255) | Nama lengkap                |
+| created_at | TIMESTAMP    | Waktu dibuat                |
+| updated_at | TIMESTAMP    | Waktu diperbarui            |
+
+### Tabel 2: `[Nama Tabel 2]`
+
+| Nama Field | Tipe Data | Keterangan                  |
+| ---------- | --------- | --------------------------- |
+| id         | INT       | Primary key, auto increment |
+| id_tabel1  | INT       | Foreign key ke tabel1       |
+| nilai      | FLOAT     | Nilai atau skor             |
+| created_at | TIMESTAMP | Waktu dibuat                |
+| updated_at | TIMESTAMP | Waktu diperbarui            |
+
+---
+
+## Relasi Antar Tabel
+
+-   Tabel `[Nama Tabel 1]` memiliki relasi **one-to-many** dengan tabel `[Nama Tabel 2]`.
+-   Foreign key: `id_tabel1` di `[Nama Tabel 2]` merujuk ke `id` di `[Nama Tabel 1]`.
+
+---
+
+## Catatan Tambahan
+
+Tambahkan informasi tambahan jika perlu, seperti cara instalasi, dependensi, atau perintah untuk menjalankan proyek.
+
+```bash
+# contoh instalasi (jika Laravel)
+composer install
+php artisan migrate
+php artisan serve
+
+```
