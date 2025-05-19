@@ -124,20 +124,61 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ---
 
+Tabel 3: `[agenda_user]`
+
+| Nama Field | Tipe Data    | Keterangan                                                                     |
+| ---------- | ------------ | ------------------------------------------------------------------------------ |
+| user_id    | INT          | Primary key sekaligus foreign key ke `users.id`, one-to-one, cascade on delete |
+| nis        | VARCHAR(255) | Nomor Induk Siswa, nullable                                                    |
+| alamat     | VARCHAR(255) | Alamat lengkap, nullable                                                       |
+| no_hp      | VARCHAR(255) | Nomor HP, nullable                                                             |
+| created_at | TIMESTAMP    | Waktu pembuatan record                                                         |
+| updated_at | TIMESTAMP    | Waktu pembaruan record                                                         |
+
+---
+
 ## Relasi Antar Tabel
 
--   Tabel `[users]` memiliki relasi **one-to-many** dengan tabel `[agenda]`.
+One‑to‑Many: users → agendas
 
-    -   Foreign key: `user_id` di `[agenda]` merujuk ke `id` di `[users]`.
-    -   Penjelasan: 1 pengguna bisa membuat banyak agenda.
+Foreign key: agendas.user_id → users.id
 
--   Tabel `[agenda]` memiliki relasi **one-to-many** dengan tabel `[agenda_user]`.
+Makna: Satu pengguna (admin/guru) dapat membuat banyak agenda.
 
-    -   Foreign key: `agenda_id` di `[agenda_user]` merujuk ke `id` di `[agenda]`.
-    -   Penjelasan: 1 agenda bisa diikuti oleh banyak siswa.
+---
 
--   Tabel `[users]` memiliki relasi **one-to-many** dengan tabel `[agenda_user]`.
-    -   Foreign key: `user_id` di `[agenda_user]` merujuk ke `id` di `[users]`.
-    -   Penjelasan: 1 siswa bisa mendaftar ke banyak agenda.
+One‑to‑Many: agendas → agenda_user
+
+Foreign key: agenda_user.agenda_id → agendas.id
+
+Makna: Satu agenda dapat diikuti oleh banyak pendaftaran (many side).
+
+---
+
+One‑to‑Many: users → agenda_user
+
+Foreign key: agenda_user.user_id → users.id
+
+Makna: Satu siswa dapat mendaftar ke banyak agenda.
+
+---
+
+Many‑to‑Many: users ↔️ agendas melalui pivot agenda_user
+
+Pivot: tabel agenda_user menghubungkan users.id dan agendas.id
+
+Makna:
+
+Satu siswa (users) dapat mendaftar ke banyak agenda.
+
+Satu agenda dapat diikuti banyak siswa.
+
+---
+
+One‑to‑One: users ↔️ profiles
+
+Foreign key & PK: profiles.user_id → users.id
+
+Makna: Satu user hanya punya satu profile, dan satu profile hanya milik satu user.
 
 ---
