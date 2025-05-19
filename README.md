@@ -124,7 +124,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ---
 
-Tabel 3: `[agenda_user]`
+### Tabel 4: `[profile]`
 
 | Nama Field | Tipe Data    | Keterangan                                                                     |
 | ---------- | ------------ | ------------------------------------------------------------------------------ |
