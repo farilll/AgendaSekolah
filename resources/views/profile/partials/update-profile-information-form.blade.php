@@ -1,4 +1,69 @@
-<section>
+<section class="mb-4">
+    <div class="mb-3">
+        <h5 class="fw-semibold">Informasi Profil</h5>
+        <p class="text-muted mb-0">
+            Perbarui informasi profil dan alamat email akun Anda.
+        </p>
+    </div>
+
+    {{-- Form verifikasi ulang email --}}
+    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+        @csrf
+    </form>
+
+    {{-- Form update profil --}}
+    <form method="post" action="{{ route('profile.update') }}">
+        @csrf
+        @method('patch')
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama</label>
+            <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                value="{{ old('name', $user->name) }}" required autofocus autocomplete="name">
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" type="email"
+                class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}"
+                required autocomplete="username">
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+
+            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+                <div class="mt-2">
+                    <p class="text-dark small mb-1">
+                        Alamat email Anda belum diverifikasi.
+                        <button form="send-verification" type="submit" class="btn btn-link btn-sm p-0 align-baseline">
+                            Klik di sini untuk kirim ulang email verifikasi.
+                        </button>
+                    </p>
+
+                    @if (session('status') === 'verification-link-sent')
+                        <div class="text-success small mt-1">
+                            Tautan verifikasi baru telah dikirim ke email Anda.
+                        </div>
+                    @endif
+                </div>
+            @endif
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+
+            @if (session('status') === 'profile-updated')
+                <span class="text-muted small">Tersimpan.</span>
+            @endif
+        </div>
+    </form>
+</section>
+
+
+{{-- <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Profile Information') }}
@@ -28,7 +93,7 @@
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
                         {{ __('Your email address is unverified.') }}
@@ -61,4 +126,4 @@
             @endif
         </div>
     </form>
-</section>
+</section> --}}

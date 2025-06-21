@@ -39,4 +39,5 @@ class RoleSeeder extends Seeder
             User::create($val);
         };
     }
+
 }

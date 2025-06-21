@@ -17,7 +17,7 @@ return new class extends Migration
         $table->string('alamat')->nullable();
         $table->string('no_hp')->nullable();
         $table->timestamps();
-});
+});  
 
     }
                                                                                                                  

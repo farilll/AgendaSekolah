@@ -20,8 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'role',
         'password',
+        'role',
     ];
 
     /**
@@ -46,4 +46,26 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    // User.php
+    public function scopeGuru($query)
+    {
+        return $query->where('role', 'guru');
+    }
+
+    public function scopeSiswa($query)
+    {
+        return $query->where('role', 'siswa');
+    }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('role', 'admin');
+    }
+
+    public function pendaftarans()
+{
+    return $this->hasMany(AgendaUserModel::class);
+}
+
+
 }

@@ -1,4 +1,57 @@
-<section>
+<section class="mb-4">
+    <div class="mb-3">
+        <h5 class="fw-semibold">Perbarui Password</h5>
+        <p class="text-muted mb-0">
+            Pastikan akun Anda menggunakan password yang panjang dan acak untuk tetap aman.
+        </p>
+    </div>
+
+    <form method="post" action="{{ route('password.update') }}">
+        @csrf
+        @method('put')
+
+        <div class="mb-3">
+            <label for="update_password_current_password" class="form-label">Password Saat Ini</label>
+            <input id="update_password_current_password" name="current_password" type="password"
+                class="form-control @error('current_password', 'updatePassword') is-invalid @enderror"
+                autocomplete="current-password">
+            @error('current_password', 'updatePassword')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="update_password_password" class="form-label">Password Baru</label>
+            <input id="update_password_password" name="password" type="password"
+                class="form-control @error('password', 'updatePassword') is-invalid @enderror"
+                autocomplete="new-password">
+            @error('password', 'updatePassword')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="update_password_password_confirmation" class="form-label">Konfirmasi Password</label>
+            <input id="update_password_password_confirmation" name="password_confirmation" type="password"
+                class="form-control @error('password_confirmation', 'updatePassword') is-invalid @enderror"
+                autocomplete="new-password">
+            @error('password_confirmation', 'updatePassword')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+
+            @if (session('status') === 'password-updated')
+                <span class="text-muted small">Tersimpan.</span>
+            @endif
+        </div>
+    </form>
+</section>
+
+
+{{-- <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Update Password') }}
@@ -45,4 +98,4 @@
             @endif
         </div>
     </form>
-</section>
+</section> --}}

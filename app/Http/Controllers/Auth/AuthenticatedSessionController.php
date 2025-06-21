@@ -25,10 +25,22 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // return redirect()->intended(route('/', absolute: false));
+        $userData = Auth::user()->role;
+
+        if ($userData == 'admin') {
+            return redirect()->route('dashadmin');
+        } elseif ($userData == 'guru') {
+            return redirect()->route('dashguru');
+        } elseif ($userData == 'siswa') {
+            return redirect()->route('dashsiswa');
+        } else {
+            return redirect()->route('dashsiswa');
+
+        }
+
     }
 
     /**
@@ -37,11 +49,9 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Anda telah logout.');
     }
 }

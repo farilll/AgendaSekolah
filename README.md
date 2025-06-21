@@ -84,6 +84,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Struktur Tabel Database
 
+<p align="center">
 ### Tabel 1: `[users]`
 
 | Nama Field | Tipe Data    | Keterangan                        |
@@ -135,7 +136,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 | created_at | TIMESTAMP    | Waktu pembuatan record                                                         |
 | updated_at | TIMESTAMP    | Waktu pembaruan record                                                         |
 
----
+## </p>
 
 ## Relasi Antar Tabel
 
